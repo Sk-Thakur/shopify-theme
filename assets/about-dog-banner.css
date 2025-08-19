@@ -1,0 +1,47 @@
+.about-dog-banner-bg {
+    background-size: cover;
+    height: 438px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+.about-dog-banner-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 495px;
+    margin: 0 10% 0 auto;
+}
+.about-dog-banner-content h7 {
+    font-size: 18px;
+    line-height: 120%;
+}
+.about-dog-banner-content h2 {
+    font-size: 70px;
+    line-height: 90%;
+    padding: 17px 0 15px 0;
+}
+.about-dog-banner-content p {
+    font-size: 20px;
+    line-height: 140%;
+    padding-bottom: 25px;
+}
+@media screen and (max-width: 749px) {
+  .about-dog-banner-content {
+    margin: 0 auto 0 auto;
+    align-items: flex-end;
+ }  
+ .about-dog-banner-bg {
+    object-fit: cover;
+    height: 670px;
+ }
+ .about-dog-banner-content h2 {
+    font-size: 45px;
+    padding: 17px 0 15px;
+ }
+ .about-dog-banner-content h2 br{
+    display: none;
+ }
+ .about-dog-banner-content .text-center {
+    padding: 0px 10px 39px 10px;
+ }
+}

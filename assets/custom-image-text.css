@@ -1,0 +1,26 @@
+.comparison-section-wrapper img {
+  display: block;
+  margin: 0 29% 0 auto;
+}
+.comparison-section-wrapper h7 {
+  display: block;
+  line-height: 117%;
+  font-size: 40px;
+  padding: 30px 0 25px 0;
+  letter-spacing: normal;
+}
+@media (max-width: 767px) {
+  .comparison-section-wrapper h7 {
+    margin: 0 auto;
+    max-width: 300px;
+    line-height: 117%;
+    font-size: 25px;
+  }
+  .comparison-section-wrapper h7 br {
+    display: none;
+  }
+  .comparison-section-wrapper img {
+    width: 85%;
+    margin: 0 auto 0 21%;
+  }
+}

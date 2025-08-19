@@ -1,0 +1,132 @@
+.get-swag .get-swag-wrapper {
+  margin: 0 0 0 auto;
+  max-width: 1486px;
+  background: #fcf6eb;
+  border-radius: 15px 0px 0px 15px;
+  padding: 40px 0 40px 35px;
+  border-width: 2px 0px 2px 2px;
+  border-style: solid;
+  overflow: hidden;
+}
+.get-swag-col-wrapper h2 {
+  font-size: 70px;
+  line-height: 100%;
+}
+.get-swag .get-swag-wrapper .col-md-8 {
+  padding-right: 0px;
+  flex: 0 0 63%;
+  width: 63%;
+}
+.get-swag .get-swag-wrapper .col-md-4 {
+  padding-right: 0;
+  flex: 0 0 31%;
+}
+.get-swag-slider .slick-list.draggable {
+  padding: 0 20% 0 0;
+}
+.get-swag-slider-card {
+  position: relative;
+}
+.get-swag-slider-card .after-image {
+  position: absolute;
+  top: auto;
+  right: auto;
+  left: 0px;
+  bottom: 85px;
+}
+.get-swag-col-wrapper img {
+  margin-top: -11rem;
+}
+.get-swag-slider .slick-slide {
+  margin: 0 8px;
+}
+.get-swag-slider .slick-list {
+  margin: 0 -8px;
+}
+.get-swag-slider-card a {
+  text-decoration: none;
+  color: inherit;
+}
+.get-swag-slider-card h7 {
+  font-size: 25px;
+  line-height: 140%;
+  display: block;
+  padding-top: 23px;
+}
+.swag-slider-arrows button {
+  background: transparent;
+  border: none;
+}
+.swag-slider-arrows {
+  display: flex;
+  gap: 15px;
+  padding-top: 15px;
+}
+.get-swag-btn {
+  margin-top: -57px;
+}
+@media screen and (max-width: 749px) {
+  .get-swag .get-swag-wrapper .col-md-8,
+  .get-swag .get-swag-wrapper .col-md-4 {
+    padding-right: 0px;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  .get-swag-slider .slick-list.draggable {
+    padding: 0;
+  }
+  .get-swag .get-swag-wrapper {
+    margin: 0 10px;
+    border-radius: 15px;
+    padding: 25px 20px 65px 20px;
+    border-width: 1px 1px 1px 1px;
+    position: relative;
+  }
+  .get-swag-col-wrapper h2 {
+    text-align: center;
+    font-size: 45px;
+    line-height: 104%;
+    padding-bottom: 17px;
+  }
+  .get-swag-wrapper .swag-slider-arrows {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .get-swag-col-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .get-swag-col-wrapper .custom-multirow-media {
+    flex: 0 0 48%;
+    text-align: start;
+  }
+  .get-swag-col-wrapper img {
+    margin-bottom: -30px;
+    margin-top: 0rem;
+    position: relative;
+    z-index: 1;
+    width: 88% !important;
+  }
+  .get-swag-slider-card h7 {
+    text-align: center;
+    font-size: 19px;
+  }
+  .swag-slider-arrows svg {
+    width: 25px;
+  }
+  .get-swag-slider-card .after-image {
+    position: absolute;
+    top: auto;
+    right: -3px;
+    left: auto;
+    bottom: 25px;
+    width: 33%;
+    transform: rotate(45deg);
+  }
+}

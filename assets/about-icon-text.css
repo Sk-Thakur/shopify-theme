@@ -1,0 +1,20 @@
+.about-icon-text-wrapper h7 {
+    display: block;
+    font-size: 18px;
+    line-height: 120%;
+    padding-top: 20px;
+}
+@media screen and (max-width: 749px) {
+.about-icon-text-wrapper .row .col-md-3 {
+    flex: 0 0 50%;
+ }
+ .about-icon-text-wrapper h7 br{
+    display: none;
+ }
+ .about-icon-text-wrapper {
+    margin-top: -35px;
+ }
+ .about-icon-text-wrapper .row {
+    row-gap: 35px;
+ }
+}

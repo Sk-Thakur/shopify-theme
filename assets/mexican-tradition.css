@@ -1,0 +1,49 @@
+.mexican-tradition-wrapper {
+  border-radius: 15px;
+}
+.mexican-tradition-col-wrapper h7 {
+  font-size: 18px;
+}
+.mexican-tradition-col-wrapper h2 {
+  padding: 10px 0 10px 0;
+  font-size: 70px;
+  line-height: 105%;
+}
+.mexican-tradition-col-wrapper p {
+  font-size: 20px;
+  line-height: 140%;
+  padding-bottom: 25px;
+}
+@media screen and (max-width: 749px) {
+  .mexican-tradition .page-width {
+    padding: 0 10px;
+  }
+  .mexican-tradition {
+    border-radius: 15px;
+  }
+  .mexican-tradition-col-wrapper img {
+    width: 71% !important;
+    display: block;
+    margin: 15px auto 15px auto;
+  }
+  .mexican-tradition-col-wrapper h2 {
+    font-size: 45px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .mexican-tradition-col-wrapper h2 br {
+    display: none;
+  }
+  .mexican-tradition-col-wrapper p {
+    font-size: 16px;
+    padding-bottom: 25px;
+    margin: 0 auto;
+    max-width: 340px;
+  }
+  .mexican-tradition-col-wrapper p br {
+    display: none;
+  }
+  .mexican-tradition-col-wrapper .custom-multirow-media {
+    padding: 0 25px;
+  } 
+}

@@ -1,0 +1,54 @@
+.mission-banner-top h1 {
+  font-size: 120px;
+  line-height: 90%;
+}
+.mission-banner-top .position-relative .position-absolute {
+  left: auto;
+  right: -13px;
+  top: auto;
+  bottom: -40px;
+}
+.mission-banner-bottom {
+  padding-top: 13rem;
+}
+.mission-banner-bottom h7 {
+  display: block;
+  font-size: 30px;
+  line-height: 90%;
+  padding-bottom: 20px;
+}
+.mission-banner-bottom p {
+  font-size: 20px;
+  line-height: 140%;
+}
+.mission-banner-top {
+  max-width: 577px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 749px) {
+  .mission-banner-img img {
+    width: 80% !important;
+  }
+  .mission-banner-top h1 {
+    padding-top: 50px;
+    font-size: 70px;
+  }
+  .mission-banner-top .position-relative .position-absolute {
+    left: auto;
+    right: 5px;
+    top: -25px;
+    bottom: auto;
+    width: 34%;
+    transform: rotate(-24deg);
+  }
+  .mission-banner-bottom {
+    padding-top: 4rem;
+  }
+  .mission-banner-bottom h7 {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+  .mission-banner-bottom p {
+    font-size: 16px;
+  }
+}

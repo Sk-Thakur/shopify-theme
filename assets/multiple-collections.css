@@ -1,0 +1,112 @@
+.multiple-collections-top {
+  background: #ff1f2c;
+  padding: 10rem 0 35px 0;
+}
+.just-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.just-tabs .tablink {
+  border-radius: 32px;
+  font-size: 18px;
+  padding: 0 30px;
+  height: 55px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.multiple-collections-top .row .col-md-4:first-child,
+.multiple-collections-top .row .col-md-4:last-child {
+  flex: 0 0 14%;
+}
+.multiple-collections-top .row .col-md-4:nth-child(2) {
+  flex: 0 0 72%;
+}
+.multiple-collections-top h1 {
+  font-size: 120px;
+  line-height: 90%;
+  padding-bottom: 10px;
+}
+.popular-slider-card .price {
+  display: inline;
+}
+.popular-slider-card .quick-add__submit {
+  transition: all 0.3s ease;
+  border-width: 2px;
+  min-width: auto;
+  padding: 0 30px !important;
+  background: transparent;
+  border-color: #201c1c;
+  color: #201c1c;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.popular-slider-card .price span {
+  font-size: 18px;
+  font-weight: 500;
+}
+.popular-slider-card .quick-add__submit:hover {
+  background: #ff1f2c;
+  border-color: #ff1f2c;
+}
+.popular-slider-card .quick-add {
+  text-align: center;
+}
+.popular-slider-card
+  .card--standard
+  > .card__content
+  .card__information
+  .price {
+  display: none;
+}
+.popular-slider-card .card--standard > .card__content .card__information {
+  text-align: center;
+}
+.popular-slider-card .card--standard > .card__content .card__information h3 {
+  font-family: "PRINTF-Regular" !important;
+  font-size: 30px;
+  padding-top: 10px;
+}
+.popular-slider-card .card--standard .card__inner,
+.popular-slider-card .card .card__inner .card__media {
+  border-radius: 15px !important;
+}
+@media screen and (max-width: 749px) {
+  .multiple-collections-top .row .col-md-4:first-child {
+    display: flex;
+  }
+  .multiple-collections-top .row {
+    justify-content: center;
+  }
+  .multiple-collections-top .row .col-md-4:nth-child(2) {
+    flex: 0 0 100%;
+  }
+  .multiple-collections-top .row .col-md-4:first-child,
+  .multiple-collections-top .row .col-md-4:last-child {
+    flex: 0 0 50%;
+  }
+  .multiple-collections-top h1 {
+    font-size: 70px;
+    line-height: 90%;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+  .just-tabs .tablink {
+    font-size: 14px;
+    padding: 0 15px;
+    height: 39px;
+  }
+  .just-tabs {
+    gap: 10px;
+  }
+  .tabcontent .row {
+    row-gap: 50px;
+  }
+  .popular-slider-card .card--standard>.card__content .card__information h3 {
+    font-size: 25px;
+  }
+}

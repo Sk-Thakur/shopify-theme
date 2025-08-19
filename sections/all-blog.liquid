@@ -1,0 +1,65 @@
+<section class="blogModule container-wrap">
+      <div class="blogModule-posts__wrapper">
+          <div class="blogModule-posts row">
+          {% for block in section.blocks %}
+             {% assign article = articles[block.settings.blog] %}
+              <a href="{{ article.url }}" class="blogModule-posts">
+                    <div class="article-imgg">
+                        {{- article.image | image_url: width: 300 | image_tag: class: 'img-fluid ' -}}
+                    </div>
+                    <div class="article-info">
+                        <p class="post-date">{{ article.published_at | date: '%B %d, %Y' }}</p>
+                        <h4 class="h3">{{ article.title }}</h4>
+                    </div>
+                  </a>
+            {% endfor %}
+          </div>
+      </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Single List Blog",
+    "settings": [ {
+      "type": "header",
+      "content": "Content"
+    }, 
+
+    {
+      "type": "range",
+      "id": "article_rows",
+      "label": "Posts rows",
+      "default":1,
+      "min":1,
+      "max":4,
+      "step":1
+    },
+    {
+      "type": "range",
+      "id": "article_columns",
+      "label": "Posts per row",
+      "default":4,
+      "min":1,
+      "max":5,
+      "step":1
+    } ],
+     "blocks": [
+    {
+      "type": "slide",
+      "name": "Single BLog",
+      "settings": [
+        {
+          "type": "article",
+          "id": "blog",
+          "label": "Blog"
+         }
+    ]
+    }
+  ],  
+    "presets": [ {
+      "name": "Single List Blog"
+      
+    }
+    ]
+  }
+{% endschema %}

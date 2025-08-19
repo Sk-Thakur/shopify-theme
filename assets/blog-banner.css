@@ -1,0 +1,180 @@
+
+.blog-pills-wrapper .tablink {
+  display: inline-flex;
+  background: transparent;
+  border: 2px solid;
+  border-radius: 30px;
+  padding: 0 33px;
+  height: 55px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: none;
+  color: #201c1c;
+}
+.just-tabs-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.blog-pill {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+}
+.main-heading h1 {
+  line-height: 90%;
+  font-size: 120px;
+  text-transform: uppercase;
+}
+.blog-pills-wrapper {
+  position: relative;
+  padding-bottom: 80px;
+}
+.blog-pills-wrapper .main-heading {
+  position: absolute;
+  top: 7%;
+  left: 0;
+  right: 0;
+}
+.tabcontent .grid-heading {
+  font-size: 70px;
+  line-height: 100%;
+  padding: 50px 0 25px 0;
+}
+.featured-blog h7 {
+  font-size: 18px;
+  line-height: 120%;
+}
+.featured-blog h3 {
+  font-size: 70px;
+  line-height: 105%;
+  padding: 15px 0 10px 0;
+}
+.featured-blog a {
+  color: #201c1c;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+.featured-blog a:hover,
+.blog-search-btn:hover {
+  background: #42a055;
+  border-color: #42a055;
+}
+.featured-blog .text-center {
+  margin: 0 auto;
+  max-width: 520px;
+}
+
+.blog-pills-wrapper .featured-articles-slider .slick-slide {
+  margin: 0 10px;
+}
+.blog-pills-wrapper .featured-articles-slider .slick-list {
+  margin: 0 -10px;
+}
+.tabcontent .blog-load-more {
+  color: #201c1c;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.tabcontent .blog-load-more:hover {
+  background: #f49200;
+  border-color: #f49200;
+}
+.blog-search-bar {
+  margin: 45px auto 15px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+}
+.blog-search-bar button {
+  background: #201c1c;
+  position: absolute;
+  left: auto;
+  font-size: 16px;
+  right: 0;
+  border-radius: 24px;
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  height: 49px;
+  align-items: center;
+  padding: 0 28px;
+  cursor: pointer;
+}
+.featured-blog p {
+  font-size: 20px;
+}
+.blog-search-bar input {
+  color: #201c1c;
+  width: 100%;
+  background: transparent;
+  padding: 16px 12px;
+  border: 2px solid #201c1c;
+  border-radius: 45px;
+}
+.blog-search-bar input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.blog-search-bar input::placeholder {
+  color: #201c1c;
+}
+.blog-search-btn span {
+  margin-right: 8px;
+  margin-top: 6px;
+}
+@media screen and (max-width: 749px) {
+.main-heading h1 {
+  line-height: 90%;
+  font-size: 70px;
+ }
+.blog-pills-wrapper .main-heading {
+  top: 6.7%;
+ }
+ .blog-pills-wrapper .tablink {
+  padding: 0 14px;
+  height: 40px;
+  font-size: 16px;
+ }
+ .just-tabs-buttons {
+  gap: 15px;
+ }
+ .featured-blog h7 {
+  display: block;
+  padding-top: 20px;
+  font-size: 19px;
+ }
+ .featured-blog h3 {
+  max-width: 310px;
+  font-size: 45px;
+  padding: 13px 0 10px;
+  margin: 0 auto;
+ }
+ .tabcontent .grid-heading {
+  text-align: center;
+  font-size: 43px;
+ }
+ .blog-grid .featured-articles-slider {
+  padding-bottom: 20px;
+  row-gap: 50px;
+ }
+ .tabcontent .read-more-btn {
+  text-align: center;
+ }
+ .blog-pills-wrapper {
+  padding-bottom: 40px;
+ }
+ .blog-grid .featured-articles-slider .article-info h4 {
+  max-width: 340px;
+  margin: 0 auto;
+ }
+}

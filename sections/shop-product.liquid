@@ -1,0 +1,343 @@
+{{ 'shop-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shop-product.js' | asset_url }}" defer="defer"></script>
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{%- style -%}
+   .section-{{ section.id }}-padding {
+     padding-top: {{ section.settings.padding_top | times: 0.4 | round: 0 }}px;
+     padding-bottom: {{ section.settings.padding_bottom | times: 0.4 | round: 0 }}px;
+   }
+
+   .section-{{ section.id }} {
+     margin-top: {{ section.settings.margin_top | times: 0.4 | round: 0 }}px;
+     margin-bottom: {{ section.settings.margin_bottom | times: 0.4 | round: 0 }}px;
+   }
+    .section-{{ section.id }} .shop-product-wrapper {
+    border: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+    border-right: none !important;
+  }
+  .section-{{ section.id }} .btn.btn-primary {
+      color: {{ section.settings.btn_text_color }};
+      background-color: {{ section.settings.btn_bg_color }};
+      border-color: {{ section.settings.btn_border_color }};
+    }
+
+    .section-{{ section.id }} .btn.btn-primary:hover {
+      background-color: {{ section.settings.btn_hover_bg_color }};
+      border-color: {{ section.settings.btn_hover_bg_color }};
+      color: {{ section.settings.btn_text_color_hover }};
+    }
+   @media screen and (min-width: 750px) {
+     .section-{{ section.id }}-padding {
+       padding-top: {{ section.settings.padding_top }}px;
+       padding-bottom: {{ section.settings.padding_bottom }}px;
+     }
+
+     .section-{{ section.id }} {
+       margin-top: {{ section.settings.margin_top}}px;
+       margin-bottom: {{ section.settings.margin_bottom }}px;
+     }
+   }
+{%- endstyle -%}
+
+<section
+  class=" shop-product section-{{ section.id }} gradient  {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="section-{{ section.id }}-padding">
+    <div class="shop-product-wrapper">
+      <div class="row justify-content-between">
+        <div class="col-md-4">
+          <div class="shop-product-col-wrapper">
+            <h2>{{ section.settings.heading }}</h2>
+            <div class="custom-slider-arrows"></div>
+            <div class="shop-product-btn">
+              <a class="btn btn-primary" href="{{ section.settings.btn-url }}">
+                {{- section.settings['btn-label'] -}}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="shop-product-col-bottom-wrapper">
+            <div class="shop-product-slider">
+              {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+                <div class="shop-product-slider-card product-id-{{ product.id }}">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    lazy_load: lazy_load,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    show_ingredient: section.settings.show_ingredient,
+                    skip_styles: skip_card_product_styles,
+                    section_id: section.id,
+                    quick_add: section.settings.quick_add
+                  %}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop Product",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "url",
+      "id": "btn-url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "btn-label",
+      "label": "Button Label"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg_color",
+      "label": "Button Hover Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color_hover",
+      "label": "Button Text Color Hover"
+    },
+    {
+      "type": "header",
+      "content": "Section Border"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border Width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.all.image_shape.options__1.label"
+        },
+        {
+          "value": "arch",
+          "label": "t:sections.all.image_shape.options__2.label"
+        },
+        {
+          "value": "blob",
+          "label": "t:sections.all.image_shape.options__3.label"
+        },
+        {
+          "value": "chevronleft",
+          "label": "t:sections.all.image_shape.options__4.label"
+        },
+        {
+          "value": "chevronright",
+          "label": "t:sections.all.image_shape.options__5.label"
+        },
+        {
+          "value": "diamond",
+          "label": "t:sections.all.image_shape.options__6.label"
+        },
+        {
+          "value": "parallelogram",
+          "label": "t:sections.all.image_shape.options__7.label"
+        },
+        {
+          "value": "round",
+          "label": "t:sections.all.image_shape.options__8.label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.all.image_shape.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ingredient",
+      "default": false,
+      "label": "Show Ingredient"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_rating.label",
+      "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section Margin And Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop Product"
+    }
+  ]
+}
+{% endschema %}

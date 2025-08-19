@@ -1,0 +1,87 @@
+.popular-vinegar-wrapper-top h2 {
+  font-size: 70px;
+  line-height: 105%;
+}
+.popular-vinegar-wrapper-top .position-relative .position-absolute {
+  left: auto;
+  right: 6%;
+  top: 22%;
+  bottom: auto;
+}
+.popular-vinegar {
+  position: relative;
+  z-index: -1;
+}
+.popular-vinegar-media.text-start {
+  text-align: left;
+}
+.popular-vinegar-media.text-center {
+  text-align: center;
+}
+.popular-vinegar-media.text-end {
+  text-align: right;
+}
+.popular-vinegar-wrapper-bottom h7 {
+  font-size: 30px;
+  line-height: 120%;
+}
+.popular-vinegar-wrapper-bottom h7 span {
+  display: block;
+  position: relative;
+  padding-bottom: 40px;
+}
+.popular-vinegar-wrapper-bottom h7 span:last-child {
+  padding-bottom: 0px;
+}
+.popular-vinegar-wrapper-bottom h7 span:after {
+  background: url(https://cdn.shopify.com/s/files/1/0953/8666/5250/files/Vector.svg?v=1753967727)
+    no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  width: 74%;
+  height: 4px;
+  margin: 0;
+  content: " ";
+  top: auto;
+  left: 0;
+  bottom: 25px;
+  right: 0;
+}
+.popular-vinegar-wrapper-bottom h7 span:last-child:after {
+  display: none;
+}
+.popular-vinegar-wrapper-bottom {
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 1200px;
+}
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
+  .popular-vinegar-wrapper-top .position-relative .position-absolute {
+    right: 3%;
+  }
+}
+@media screen and (max-width: 749px) {
+  .popular-vinegar-wrapper-top h2 {
+    font-size: 45px;
+    line-height: 105%;
+  }
+  .popular-vinegar-wrapper-top h2 br {
+    display: none;
+  }
+  .popular-vinegar-wrapper-top .position-relative .position-absolute {
+    right: -4%;
+    top: 45%;
+    width: 23%;
+    transform: rotate(-60deg);
+  }
+  .popular-vinegar-wrapper-bottom h7 {
+    display: block;
+    padding-top: 35px;
+    font-size: 19px;
+  }
+  .popular-vinegar-wrapper-bottom h7 span:after {
+    width: 100%;
+    margin: 0 auto;
+    background-size: cover;
+  }
+}

@@ -1,0 +1,212 @@
+{{ 'about-dog-banner.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.4 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.4 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top | times: 0.4 | round: 0 }}rem;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.4 | round: 0 }}px;
+  }
+  .section-{{ section.id }} .btn.btn-primary {
+     color: {{ section.settings.btn_text_color }};
+     background-color: {{ section.settings.btn_bg_color }};
+     border-color: {{ section.settings.btn_border_color }};
+   }
+
+   .section-{{ section.id }} .btn.btn-primary:hover {
+     background-color: {{ section.settings.btn_hover_bg_color }};
+     border-color: {{ section.settings.btn_hover_bg_color }};
+     color: {{ section.settings.btn_text_color_hover }};
+   }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top}}rem;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="section-{{ section.id }} about-dog-banner gradient color-{{ section.settings.section_color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="about-dog-banner-wrapper">
+      <div class="about-dog-banner-bg">
+        {% if section.settings.background_image %}
+          <style>
+            .section-{{ section.id }} .about-dog-banner-bg {
+              background-image: url('{{ section.settings.background_image | image_url }}');
+            }
+            @media screen and (max-width: 749px) {
+              .section-{{ section.id }} .about-dog-banner-bg {
+                {% if section.settings.background_image_mobile %}
+                  background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+                {% endif %}
+              }
+            }
+          </style>
+        {% endif %}
+        <div class="about-dog-banner-content">
+          <div class="text-center">
+            <div class="desktop-view">
+              <h7 class="PRINTF-Regular">{{ section.settings.caption }}</h7>
+            </div>
+            <h2>{{ section.settings.heading }}</h2>
+            <p>{{ section.settings.desc }}</p>
+            <div>
+              {%- if section.settings['btn-url'] != blank -%}
+                <a
+                  {% if section.settings['btn-url'] == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ section.settings.btn-url }}"
+                  {% endif %}
+                  class="btn btn-primary"
+                >
+                  {{ section.settings['btn-label'] | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Dog Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "html",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "html",
+      "id": "desc",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "btn-url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "btn-label",
+      "label": "Button Label"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg_color",
+      "label": "Button Hover Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color_hover",
+      "label": "Button Text Color Hover"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Margin And Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": -40,
+      "max": 120,
+      "step": 4,
+      "unit": "rem",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Dog Banner"
+    }
+  ]
+}
+{% endschema %}

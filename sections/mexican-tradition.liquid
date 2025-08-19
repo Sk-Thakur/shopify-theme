@@ -1,0 +1,228 @@
+{{ 'mexican-tradition.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.4 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.4 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top | times: 0.7 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.7 | round: 0 }}px;
+  }
+  .section-{{ section.id }} .btn.btn-primary {
+     color: {{ section.settings.btn_text_color }};
+     background-color: {{ section.settings.btn_bg_color }};
+     border-color: {{ section.settings.btn_border_color }};
+   }
+
+   .section-{{ section.id }} .btn.btn-primary:hover {
+     background-color: {{ section.settings.btn_hover_bg_color }};
+     border-color: {{ section.settings.btn_hover_bg_color }};
+     color: {{ section.settings.btn_text_color_hover }};
+   }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top}}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="section-{{ section.id }} mexican-tradition gradient  {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="page-width">
+    <div class="mexican-tradition-wrapper section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="mexican-tradition-col-wrapper">
+            <div class="custom-multirow-media text-{{ section.settings.image_alignment }}">
+              <div>
+                {% if section.settings.image %}
+                  {% assign img_style = 'width:' | append: section.settings.image_width | append: 'px;' %}
+                  {{
+                    section.settings.image
+                    | image_url: width: section.settings.image_width
+                    | image_tag: class: 'img-fluid', style: img_style
+                  }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mexican-tradition-col-wrapper text-center">
+            <h7 class="PRINTF-Regular">{{ section.settings['caption-top'] }}</h7>
+            <h2>{{ section.settings.heading }}</h2>
+            <p>{{ section.settings.desc }}</p>
+            <div>
+              <a class="btn btn-primary" href="{{ section.settings.btn-url }}">
+                {{- section.settings['btn-label'] -}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mexican Tradition",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width (in pixels)",
+      "min": 100,
+      "max": 1200,
+      "step": 20,
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image alignment",
+      "default": "start",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+     "type": "html",
+     "id": "caption-top",
+     "label": "Caption Top"
+    },
+    {
+     "type": "html",
+     "id": "heading",
+     "label": "Heading"
+    },
+    {
+     "type": "html",
+     "id": "desc",
+     "label": "Description"
+    },
+    {
+     "type": "url",
+     "id": "btn-url",
+     "label": "Button URL"
+    },
+    {
+     "type": "text",
+     "id": "btn-label",
+     "label": "Button Label"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg_color",
+      "label": "Button Hover Background Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color_hover",
+      "label": "Button Text Color Hover"
+    },
+    {
+      "type": "header",
+      "content": "Section Margin And Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mexican Tradition"
+    }
+  ]
+}
+{% endschema %}

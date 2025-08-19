@@ -1,0 +1,115 @@
+.recipe-slider-wrapper .row.reverse {
+  flex-direction: row-reverse;
+}
+.recipe-slider-wrapper .slick-slide {
+  margin: 0 8px;
+}
+.recipe-slider-wrapper .slick-list {
+  margin: 0 -8px;
+}
+.recipe-slider-main .row {
+  background: #fcf6eb;
+  margin-bottom: -1px;
+  border-radius: 15px;
+  justify-content: space-between;
+}
+.recipe-slider-main .row .col-md-6:last-child {
+  padding-left: 0;
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-bottom: -1px;
+}
+.recipe-slider-main .slick-list.draggable {
+  padding: 0 27% 0 0px;
+}
+.recipe-slider-card .custom-multirow-col-wrapper h7 {
+  font-size: 18px;
+  line-height: 120%;
+}
+.recipe-slider-card .custom-multirow-col-wrapper h2 {
+  font-size: 70px;
+  line-height: 90%;
+  padding: 15px 0 15px 0;
+}
+.recipe-slider-card .custom-multirow-col-wrapper p {
+  padding-bottom: 25px;
+  font-size: 16px;
+  line-height: 140%;
+}
+.recipe-slider-card .custom-multirow-col-wrapper a {
+  height: 44px;
+  font-size: 16px;
+}
+.recipe-slider-arrows {
+  display: flex;
+  text-align: end;
+  justify-content: end;
+  gap: 15px;
+  margin-right: -18px;
+}
+.recipe-slider-arrows button {
+  background: transparent;
+  border: none;
+}
+.recipe-slider-top h2 {
+  font-size: 70px;
+  line-height: 90%;
+}
+.recipe-slider-top {
+  padding-bottom: 30px;
+}
+.recipe-slider-top .row {
+  align-items: end;
+}
+@media screen and (max-width: 749px) {
+.recipe-slider-main .slick-list.draggable {
+  padding: 0 0% 0 0px;
+ }
+ .recipe-slider-wrapper .row.reverse {
+  flex-direction: column-reverse;
+ }
+ .recipe-slider-wrapper {
+  position: relative;
+  padding-bottom: 63px;
+ }
+ .recipe-slider-top h2 {
+  text-align: center;
+  font-size: 45px;
+  line-height: 105%;
+  max-width: 320px;
+  margin: 0 auto;
+ }
+ .recipe-slider-arrows {
+  position: absolute;
+  display: flex;
+  text-align: end;
+  justify-content: center;
+  gap: 15px;
+  margin-right: 0;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: 0;
+ }
+ .recipe-slider-wrapper .custom-multirow-col-wrapper {
+  padding: 25px 10px 25px 10px;
+  text-align: center;
+ }
+ .recipe-slider-card .custom-multirow-col-wrapper h2 {
+  font-size: 32px;
+  line-height: 105%;
+  padding: 10px 0;
+ }
+ .recipe-slider-card .custom-multirow-col-wrapper h2 br{
+  display:none;
+ }
+ .recipe-slider-main .row .col-md-6:last-child {
+  margin-right: -1px;
+ }
+ .recipe-slider-main .row {
+  overflow: hidden;
+ }
+ .recipe-slider-arrows svg {
+  width: 24px;
+ }
+}

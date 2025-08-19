@@ -1,0 +1,228 @@
+{{ 'custom-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top | times: 0.4 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.4 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top}}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="section-{{ section.id }} custom-footer gradient  {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="page-width section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+    <div class="custom-footer-wrapper">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-logo">
+            <div class="desktop-view">
+              {% if section.settings.logo != blank %}
+                {{ section.settings.logo | image_url: width: 370 | image_tag: class: 'img-fluid' }}
+              {% endif %}
+            </div>
+            <div class="mobile-view">
+              {% if section.settings.mobile_logo != blank %}
+                {{ section.settings.mobile_logo | image_url: width: 370 | image_tag: class: 'img-fluid' }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="footer-text">
+            <div class="desktop-view">
+              <h7 class="PRINTF-Regular">{{ section.settings.footer_text }}</h7>
+            </div>
+          </div>
+          <div class="footer-right-col">
+            <div class="row">
+              <div class="col-md-4">
+                <ul class="footer-menu">
+                  {%- for link in section.settings.menu_1.links -%}
+                    <li>
+                      <h7 class="PRINTF-Regular">
+                        <a href="{{ link.url }}" aria-label="link-{{ forloop.index }}">{{ link.title }}</a>
+                      </h7>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="footer-menu">
+                  {%- for link in section.settings.menu_2.links -%}
+                    <li>
+                      <h7 class="PRINTF-Regular">
+                        <a href="{{ link.url }}" aria-label="link-{{ forloop.index }}">{{ link.title }}</a>
+                      </h7>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <div class="footer-social">
+                  <div class="desktop-view">
+                    <h7 class="PRINTF-Regular">{{ section.settings.social_title }}</h7>
+                  </div>
+                  <div class="social-icons">
+                    {%- render 'social-icons', class: 'footer__list-social' -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="row align-items-end">
+                <!-- Column 1: Legal Links -->
+                <div class="col-md-4">
+                  <ul class="footer-links">
+                    <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/policies/terms-of-service">Terms of Service</a></li>
+                  </ul>
+                </div>
+
+                <!-- Column 2: Credit -->
+                <div class="col-md-4 text-center">
+                  <div class="mobile-view">
+                    <p>Copyright {{ 'now' | date: '%Y' }} © Chilito Co.</p>
+                  </div>
+                  <p>Made by Estúdio Arnold</p>
+                </div>
+
+                <!-- Column 3: Copyright -->
+                <div class="col-md-4 text-end">
+                  <div class="desktop-view">
+                    <p>Copyright {{ 'now' | date: '%Y' }} © Chilito Co.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Desktop Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo",
+      "label": "Footer Mobile Logo"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Top Text",
+      "default": "ANY MEAL, ANY TIME."
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Select First Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Select Second Menu"
+    },
+    {
+      "type": "html",
+      "id": "social_title",
+      "label": "Social Title",
+      "default": "FOLLOW THE PACK"
+    },
+    {
+      "type": "text",
+      "id": "footer_bottom_text",
+      "label": "Bottom Text",
+      "default": "Copyright 2025 © Chilito Co."
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Margin And Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

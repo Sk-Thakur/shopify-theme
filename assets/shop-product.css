@@ -1,0 +1,194 @@
+.shop-product .shop-product-wrapper {
+  margin: 0 0 0 auto;
+  max-width: 1534px;
+  background: #fcf6eb;
+  border-radius: 15px 0px 0px 15px;
+  padding: 40px 0 40px 35px;
+}
+.shop-product-col-wrapper h2 {
+  font-size: 70px;
+  line-height: 100%;
+}
+.shop-product .shop-product-wrapper .col-md-8 {
+  padding-right: 0px;
+  flex: 0 0 68%;
+  width: 68%;
+}
+.shop-product .shop-product-wrapper .col-md-4 {
+    padding-right: 0;
+    flex: 0 0 31%;
+}
+.custom-slider-arrows {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 25px;
+  padding: 35px 0 0 0;
+}
+.custom-prev,
+.custom-next {
+  background: transparent;
+  border: none;
+}
+.shop-product-slider .slick-slide {
+  margin: 0 10px;
+}
+.shop-product-slider .slick-list {
+  margin: 0 -10px;
+  padding: 0 0 0 5%;
+}
+
+.shop-product-wrapper .col-md-4 {
+  position: relative;
+}
+.shop-product-wrapper .col-md-4 .shop-product-btn {
+  position: absolute;
+  bottom: 40px;
+  top: auto;
+}
+.shop-product-col-bottom-wrapper
+  .card--standard
+  > .card__content
+  .card__information {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.shop-product-col-bottom-wrapper
+  .card--standard
+  > .card__content
+  .card__information
+  .card-information
+  .price {
+  font-family: "PRINTF-Regular" !important;
+  margin-top: 0;
+  font-size: 24px;
+  line-height: 140%;
+  color: #201c1c;
+}
+.shop-product-col-bottom-wrapper
+  .card--standard
+  > .card__content
+  .card__information
+  .card__heading {
+  font-family: "PRINTF-Regular" !important;
+  flex: 0 0 auto;
+  font-size: 24px;
+  line-height: 140%;
+  color: #201c1c;
+}
+.shop-product-wrapper {
+  overflow: hidden;
+}
+.shop-product-col-bottom-wrapper .card__inner .card__media {
+  border-radius: 15px !important;
+}
+.shop-product-slider-card .underline-links-hover:hover a {
+  text-decoration: none;
+  text-underline-offset: .3rem;
+}
+.shop-product-slider-card .card-wrapper .Product_Item_Ingredient {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%,-50%) scale(0);
+    transition: all .8s cubic-bezier(.28, .71, 0, .98);
+    width: auto;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #321E13;
+    background-color: #42A055;
+    padding: 8px 12px;
+    border-radius: 200px;
+    text-align: center;
+}
+.shop-product-slider-card .card-wrapper:hover .Product_Item_Ingredient {
+    top: var(--top);
+    left: var(--left);
+    transform: translate(-50%,-50%) scale(1) rotate(var(--rotation));
+}
+@media screen and (max-width: 749px) {
+  .shop-product .shop-product-wrapper .col-md-8, .shop-product .shop-product-wrapper .col-md-4 {
+    padding-right: 0px;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  .shop-product-slider .slick-list {
+    padding: 0 20% 0 0;
+  }
+  .shop-product-wrapper .col-md-4 .shop-product-btn {
+    position: static;
+    display: none;
+  }
+  .shop-product .shop-product-wrapper {
+    margin: 0 0px 0 15px;
+    padding: 30px 0 30px 20px;
+  }
+  .shop-product-col-wrapper h2 {
+    font-size: 45px;
+    line-height: 105%;
+  }
+  .shop-product-col-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 30px;
+  }
+  .custom-slider-arrows {
+    padding: 6px 20px 0;
+  }
+  .shop-product-col-bottom-wrapper
+    .card--standard
+    > .card__content
+    .card__information
+    .card-information
+    .price {
+    font-size: 19px;
+    line-height: 117%;
+  }
+  .shop-product-col-bottom-wrapper
+    .card--standard
+    > .card__content
+    .card__information
+    .card__heading {
+    font-size: 19px;
+    line-height: 117%;
+  }
+  .custom-slider-arrows svg {
+    width: 25px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1298px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 95%;
+  }
+}
+
+@media screen and (min-width: 1299px) and (max-width: 1398px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 1230px;
+  }
+}
+@media screen and (min-width: 1399px) and (max-width: 1499px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 1390px;
+  }
+}
+@media screen and (min-width: 1699px) and (max-width: 1899px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 1600px;
+  }
+}
+@media screen and (min-width: 1900px) and (max-width: 2099px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 1644px;
+  }
+}
+@media screen and (min-width: 2100px) and (max-width: 2500px) {
+  .shop-product .shop-product-wrapper {
+    max-width: 1766px;
+  }
+}

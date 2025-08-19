@@ -1,0 +1,190 @@
+{{ 'mission-banner.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.8 | round: 0 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}rem;
+  }
+
+  .section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top | times: 0.4 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.4 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}rem;
+      padding-bottom: {{ section.settings.padding_bottom }}rem;
+    }
+
+    .section-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top}}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="section-{{ section.id }} mission-banner gradient color-{{ section.settings.section_color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="mission-banner-wrapper">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="mission-banner-img">
+            <div class="custom-multirow-media text-{{ section.settings.image_alignment }}">
+              <div>
+                {% if section.settings.image %}
+                  {% assign img_style = 'width:' | append: section.settings.image_width | append: 'px;' %}
+                  {{
+                    section.settings.image
+                    | image_url: width: section.settings.image_width
+                    | image_tag: class: 'img-fluid', style: img_style
+                  }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mission-banner-top text-center">
+            <div class="position-relative">
+              <h1>{{ section.settings.heading }}</h1>
+              <div class="position-absolute">
+                {% if section.settings['title-image'] %}
+                  {{ section.settings['title-image'] | image_url: width: 200 | image_tag: class: 'img-fluid' }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="mission-banner-bottom text-center">
+            <h7 class="PRINTF-Regular">{{ section.settings['bottom-heading'] }}</h7>
+            <p>{{ section.settings.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mission Banner",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width (in pixels)",
+      "min": 100,
+      "max": 1200,
+      "step": 20,
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image alignment",
+      "default": "start",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "title-image",
+      "label": "Title Image"
+    },
+    {
+      "type": "html",
+      "id": "bottom-heading",
+      "label": "Bottom Heading"
+    },
+    {
+      "type": "html",
+      "id": "desc",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Section Margin And Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "rem",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "rem",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mission Banner"
+    }
+  ]
+}
+{% endschema %}

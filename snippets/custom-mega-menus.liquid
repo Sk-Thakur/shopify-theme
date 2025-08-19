@@ -1,0 +1,106 @@
+{{ 'custom-mega-menus.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<script src="{{ 'custom-mega-menu.js' | asset_url }}" defer="defer"></script>
+
+<div class="main-menu-item ">
+  <div class="main-menu-dropdown menu-5">
+    <div class="page-width">
+      <div class="custom-mega-menu-wrapper">
+        <div class="collection-tabs-wrapper">
+          <div class="tab-sidebar">
+            <button class="tab-button" data-tab="tab-1">{{ settings.collection_1_name }}</button>
+            <button class="tab-button" data-tab="tab-2">{{ settings.collection_2_name }}</button>
+            <button class="tab-button" data-tab="tab-3">{{ settings.collection_3_name }}</button>
+            <a class="tab-button" href="{{ settings.btn-url }}">{{ settings['btn-label'] }}</a>
+          </div>
+
+          <div class="tab-content-wrapper">
+            <div class="tab-content" id="tab-1">
+              <div class="product-grid">
+                {% for product in collections[settings.collection_1].products limit: 6 %}
+                  <div class="product-card">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: settings.image_ratio,
+                      image_shape: settings.image_shape,
+                      lazy_load: lazy_load,
+                      show_secondary_image: settings.show_secondary_image,
+                      show_vendor: settings.show_vendor,
+                      show_rating: settings.show_rating,
+                      skip_styles: skip_card_product_styles,
+                      section_id: section.id,
+                      quick_add: settings.quick_add
+                    %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="tab-content" id="tab-2">
+              <div class="product-grid">
+                {% for product in collections[settings.collection_2].products limit: 6 %}
+                  <div class="product-card">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: settings.image_ratio,
+                      image_shape: settings.image_shape,
+                      lazy_load: lazy_load,
+                      show_secondary_image: settings.show_secondary_image,
+                      show_vendor: settings.show_vendor,
+                      show_rating: settings.show_rating,
+                      skip_styles: skip_card_product_styles,
+                      section_id: section.id,
+                      quick_add: settings.quick_add
+                    %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="tab-content" id="tab-3">
+              <div class="product-grid">
+                {% for product in collections[settings.collection_3].products limit: 6 %}
+                  <div class="product-card">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: settings.image_ratio,
+                      image_shape: settings.image_shape,
+                      lazy_load: lazy_load,
+                      show_secondary_image: settings.show_secondary_image,
+                      show_vendor: settings.show_vendor,
+                      show_rating: settings.show_rating,
+                      skip_styles: skip_card_product_styles,
+                      section_id: section.id,
+                      quick_add: settings.quick_add
+                    %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
